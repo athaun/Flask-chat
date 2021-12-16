@@ -1,4 +1,3 @@
-# Rasberry-pi-light-control
+## Flask Chat app
+[Live Demo on my website](http://chat.athaun.tech)
 
-[Demo video on youtube](https://www.youtube.com/watch?v=v8WLEMYDLF4)
-# Flask-chat

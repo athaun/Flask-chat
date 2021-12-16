@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chat App</title>
+        <link rel="stylesheet" href="static/css/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://kit.fontawesome.com/2373daf023.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div class="chat main">
+            <div class="messages"></div>
+            <div id="inputBox">
+                <div class="search-container">
+                    <form id="messageForm" autocomplete="off">
+                        <input type="text" placeholder="Type message" id="box">
+                    </form>
+                </div>
+            </div> 
+        </div>
+        
+
+        <div class="sidenav" id="contactsMenu">
+
+            <h3><i class="fas fa-user-friends"></i> Conversations</h3>
+
+            <div class="friend selected">
+                <span class="userIcon" style="background:rgb(158, 19, 61);"><i class="fas fa-user"></i></span>
+                <h3>General Chat<span class="timestamp"></span></h3>
+                <p>...</p>
+            </div>
+            
+            <div class="friend">
+                <span class="userIcon" style="background:rgb(25, 140, 185);"><i class="fas fa-user"></i></span>
+                <h3>Spam<span class="timestamp"></span></h3>
+                <p>...</p>
+            </div>
+
+            <div class="friend">
+                <span class="userIcon" style="background:rgb(25, 185, 52);"><i class="fas fa-user"></i></span>
+                <h3>Break-off 1<span class="timestamp"></span></h3>
+                <p>...</p>
+            </div>
+
+            <div class="friend">
+                <span class="userIcon" style="background:rgb(206, 192, 1);"><i class="fas fa-user"></i></span>
+                <h3>Break-off 2<span class="timestamp"></span></h3>
+                <p>...</p>
+            </div>
+        </div>
+
+        <button id="contactsMobile"><i class="fas fa-user-friends"></i> Conversations</button>
+
+        <div class="topBar">
+            <h2>Messages</h2>
+        </div>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+        <script src="static/javascript/spawner.js"></script>
+        <script src="static/javascript/messageManager.js"></script>
+        <script>
+            $("#contactsMobile").click(f => {
+                $("#contactsMenu").toggleClass("show")
+            })
+        </script>
+
+    </body>
+</html>

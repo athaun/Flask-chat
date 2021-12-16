@@ -1,0 +1,512 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: helvetica;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1d1d1d;
+    outline: none;
+}
+
+* {
+    outline: none;
+}
+
+.chat {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-left: 400px;
+    background: #1d1d1d;
+}
+
+.messages {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    background: #1d1d1d;
+}
+
+.message {
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.yours {
+    align-items: flex-start;
+}
+
+.yours .message {
+    margin-right: 25%;
+    background-color: #2d2d2d;
+    color: white;
+    position: relative;
+    
+}
+
+.yours .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    left: -7px;
+    height: 20px;
+    width: 20px;
+    background: #2d2d2d;
+    border-bottom-right-radius: 15px;
+    
+}
+.yours .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: -10px;
+    width: 10px;
+    height: 20px;
+    background: #1d1d1d;
+    border-bottom-right-radius: 10px;
+}
+
+.mine {
+    align-items: flex-end;
+}
+
+.mine .message {
+    color: white;
+    margin-left: 25%;
+    background: linear-gradient(to bottom, #cd0bdf 0%, #0059be 100%);
+    background-attachment: fixed;
+    position: relative;
+}
+
+.mine .message.last:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+    right: -8px;
+    height: 20px;
+    width: 20px;
+    background: linear-gradient(to bottom, #cd0bdf 0%, #0059be 100%);
+    background-attachment: fixed;
+    border-bottom-left-radius: 15px;
+}
+
+.mine .message.last:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    right: -10px;
+    width: 10px;
+    height: 20px;
+    background: #1d1d1d;
+    border-bottom-left-radius: 10px;
+}
+
+div.lastMessage {
+    margin-bottom: 90px;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(0, 145, 255);
+}
+a:visited {
+    color: rgb(0, 145, 255);
+}
+/* Style the tab content */
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fade 1s;
+    animation: fade 1s;
+}
+/* The sidebar menu */
+
+.sidenav {
+    height: 100%;
+    width: 400px;
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+    overflow-x: hidden;
+    /*    padding-top: 20px;*/
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.topBar {
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    width: calc(100% - 400px); /* Full width */
+    height: 70px;
+    z-index: 3;
+    margin-left: 400px;
+    top: 0;
+    left: 0;
+    margin-top: -2px;
+    background-color: #212121;
+    overflow-x: hidden;
+    text-align: center;
+    color: white;
+    box-shadow: 7px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    /* border-bottom: 1px solid rgb(212, 212, 212); */
+}
+
+#inputBox {
+    overflow: hidden;
+    position: fixed; /* Set the navbar to fixed position */
+    height: 70px;
+    z-index: 3;
+    bottom: 0;
+    left: 0;
+    background-color: #212121;
+    overflow-x: hidden;
+    padding-left: 400px;
+    text-align: center;
+    /* border: 2px solid #e6e5eb; */
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
+    /* border-top: 1px solid rgb(71, 71, 71); */
+    width: calc(100% - 400px);
+}
+
+#inputBox input {
+    position: relative;
+    /* float: left; */
+    width: 81%;
+    height: 35px;
+    border: none;
+    background: #2d2d2d;
+    color: white;
+    padding-left: 20px;
+    margin: 15px;
+    border-radius: 50px;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* The navigation menu links */
+
+#name {
+    border: none;
+    border-bottom: 2px solid #818181;
+    color: #818181;
+    background: none;
+    width: 70%;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 4px;
+    transition: 0.3s;
+}
+#name:hover {
+    border: none;
+    border-bottom: 2px solid #818181;
+    color: #818181;
+    background: none;
+    width: 74%;
+    transition: 0.3s;
+}
+
+#name:active,
+#name:focus {
+    border: none;
+    border-bottom: 2px solid #818181;
+    color: #818181;
+    background: none;
+    width: 100%;
+    transition: 0.3s;
+}
+
+.sidenav a,
+#userProfile {
+    padding: 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+/* Style page content */
+
+#main {
+    margin-left: 400px;
+    height: 100%;
+    padding: 0px 10px;
+    margin-bottom: 90px;
+}
+
+.chat {
+    margin-top: 40px;
+    margin-bottom: 90px;
+    background: #1d1d1d;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.friend {
+    margin: 10px;
+    text-align: left;
+    padding: 4px;
+    padding-left: 80px;
+    transition: all 0.3s;
+    border-radius: 20px;
+}
+
+.friend:hover {
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.friend.selected {
+    background: #353535;
+}
+
+.friend:hover {
+    background: #353535;
+}
+
+.friend .userIcon {
+    position: absolute;
+    margin-top: 10px;
+    left: 25px;
+    padding: 16px 19px;
+    border-radius: 50%;
+    background: rgb(145, 31, 31);
+    color: white;
+}
+
+.friend .userIconImg {
+    position: absolute;
+    margin-top: 10px;
+    left: 23px;
+    border-radius: 50%;
+    color: white;
+    width: 53px;
+    height: 53px;
+}
+
+.friend h3 {
+    margin-top: 14px;
+}
+
+.friend p {
+    margin-top: -15px;
+}
+
+.timestamp {
+    color: rgb(141, 141, 141);
+    font-weight: lighter;
+    font-size: 16px;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+@media screen and (min-width: 921px) {
+    #contactsMobile {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .sidenav {
+        display: none;
+    }
+
+    .main {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .topBar {
+        margin-left: 0px;
+        width: 100%;
+    }
+
+    #inputBox {
+        width: 100%;
+        padding-left: 0px;
+    }
+    
+    .chat {
+        width: 94%;
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+
+    .sidenav:not(.show) {
+        display: block;
+        z-index: 0;
+        opacity: 0;
+        transition: all 0.4s ease;
+        position: absolute !important;
+        top: -999px !important;
+        left: -999px !important;
+    }
+
+    .sidenav.show {
+        width: 100%;
+        display: block;
+        z-index: 5;
+        opacity: 1;
+        transition: all 0.4s ease;
+    }
+
+    /* .sidenav.show  */
+
+    /* .sidenav.show > div.friend.selected */
+
+    #contactsMobile {
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        background: #007fd7;
+        border: none;
+        transition: all 0.4s;
+        border-radius: 50px;
+        top:0; 
+        left:0;
+        display: block;
+        position: fixed;
+        font-size: 15px;
+        padding: 13px;
+        border: none;
+        color: white;
+        margin: 11px;
+        z-index: 6;
+    }
+
+    body > div.topBar > h2 {
+        float: right;
+        margin-right: 20px;
+    }
+
+    #contactsMenu > h3 {
+        /* text-align: right !important;
+        margin-right: 20px;
+        margin-top: 20px;
+        /* float: right; */
+        margin-bottom: 30px;
+        color: rgba(0, 0, 0,0);
+    }
+    
+}
+
+.hide {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+ }
+
+ #closeBtn, #closeBtn2 {
+     width: 150px;
+     text-align: center;
+ }
+ .c {
+    width: 100%;
+    text-align: center;
+ }
+
+#startPresentation, #closeBtn, #closeBtn2 {
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    background: #007fd7;
+    color: white;
+    padding: 10px;
+    margin: 10px 0px;
+    color: white;
+    border: none;
+    transition: all 0.4s;
+    border-radius: 20px;
+}
+
+#startPresentation:hover, #closeBtn:hover, #closeBtn2:hover, #contactsMobile:hover {
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.4s;
+    background: rgb(63, 63, 63);
+}
+
+#startPresentation:active, #closeBtn:active, #closeBtn:active {
+    outline: none;
+}
+
+/* The Modal (background) */
+#modal, #modal2 {
+    position: fixed; /* Stay in place */
+    z-index: 40; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(15, 15, 15, 0.7); /* Black w/ opacity */
+}
+  
+  /* Modal Content/Box */
+.modal-content {
+    background-color: #363636;
+    color: white;
+    margin: 11% auto;
+    padding: 20px 0px;
+    border-radius: 15px;
+    width: 50%;
+    max-width: 790px;
+    min-width: 300px;
+}
+
+.modal-content p {
+    width: 57%;
+    margin: 0 auto;
+}
+
+.tg-0lax {
+    /* background: rgb(65, 65, 65); */
+    border-radius: 5px;
+    font-family: monospace;
+    padding: 7px;
+}
+
+.friend.disabled {
+    color: rgb(102, 102, 102);
+}
+
+@media only screen and (max-width: 700px) {
+      .modal-content {
+        width: 100%;
+        /* height: ; */
+      }
+
+      .modal-content p {
+        width: 77%;
+        margin: 0 auto;
+    }
+}
