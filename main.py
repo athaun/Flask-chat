@@ -47,5 +47,5 @@ def stuff ():
     return render_template("index.html")
 
 if __name__ == '__main__':
-    print(f"\nOn your phone go to http://{getip()}\n")
+    print(f"\nOn your phone go to http://{getip()}:8080\n")
     socketio.run(app, host="192.168.1.50", port=8080, debug=True)
